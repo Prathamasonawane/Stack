@@ -1,0 +1,81 @@
+#define MAX 5
+struct stack
+{
+	int a[MAX];
+	int top;
+}s1;
+void init()
+{
+	s1.top=-1;
+}
+int isempty()
+{
+	if(s1.top==-1)
+		return 1;
+	else
+		return 0;	
+}
+int isfull()
+{
+	if(s1.top==MAX-1)
+		return 1;
+	else
+		return 0;
+}
+void push(int num)
+{
+	if(isfull())
+		printf("Stack is full..Don't push");
+	else
+		{
+			s1.top++;
+			s1.a[s1.top]=num;
+			printf("\n Push Successfully...");
+		}
+}
+void pop()
+{
+	int val;
+	if(isempty())
+	{
+		printf("Stack is empty..Don't Pop");
+	}
+	else
+	{
+		val=s1.a[s1.top];
+		s1.top--;
+		printf("\n Poped value=%d",val);
+	}
+}
+void disp()
+{
+	int i;
+	for(i=s1.top;i>=0;i--)
+	{
+		printf("%d\n",s1.a[i]);
+	}
+}
+int main()
+{
+	int ch,num;
+	init();
+	do
+	{
+		printf("\n 1-push \n 2-pop \n 3-disp");
+		printf("\n Enter Choice:");
+		scanf("%d",&ch);
+		switch(ch)
+		{
+			case 1:printf("Enter Number:");
+				   scanf("%d",&num);
+				   push(num);
+				   break;
+			case 2:pop();
+				   break;
+			case 3:disp();
+				   break;
+          default :printf("\n Invalid Choice");
+			
+		}
+	}while(ch<4);
+}
