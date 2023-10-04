@@ -1,0 +1,41 @@
+#include<stdio.h>
+#include<stdlib.h>
+typedef struct node
+{
+char data;
+struct node *next;
+}NODE;
+NODE *top;
+void init()
+{
+	top==NULL;
+}
+void push(char num)
+{
+	NODE *newnode;
+	newnode=(NODE*)malloc(sizeof(NODE));
+	newnode->data=num;
+	newnode->next=top;
+	top=newnode;
+}
+void disp()
+{
+	NODE *temp;
+	for(temp=top;temp!=NULL;temp=temp->next)
+	{
+	  printf("%c",temp->data);
+	}
+}
+int main()
+{
+	char s1[20];
+	int i;
+	init();
+	printf("Enter String:");
+	scanf("%s",s1);
+	for(i=0;s1[i]!='\0';i++)
+	{
+	  push(s1[i]);
+	}
+	disp();
+}
